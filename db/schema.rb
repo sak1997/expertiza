@@ -685,11 +685,11 @@ ActiveRecord::Schema.define(version: 20220423002828) do
     t.integer "team_id"
     t.integer "user_id"
     t.integer "duty_id"
-    t.bigint "participant_id"
+    t.integer "participant_id"
     t.index ["duty_id"], name: "index_teams_users_on_duty_id"
-    t.index ["participant_id"], name: "index_teams_users_on_participant_id"
     t.index ["team_id"], name: "fk_users_teams"
     t.index ["user_id"], name: "fk_teams_users"
+    t.index ["participant_id"], name: "fk_teams_participantss"
   end
 
   create_table "track_notifications", id: :integer, force: :cascade, options: "ENGINE=MyISAM DEFAULT CHARSET=latin1" do |t|
@@ -799,4 +799,5 @@ ActiveRecord::Schema.define(version: 20220423002828) do
   add_foreign_key "teams_users", "duties"
   add_foreign_key "teams_users", "teams", name: "fk_users_teams"
   add_foreign_key "teams_users", "users", name: "fk_teams_users"
+  add_foreign_key "teams_users", "participants", name: "fk_teams_participants"
 end
