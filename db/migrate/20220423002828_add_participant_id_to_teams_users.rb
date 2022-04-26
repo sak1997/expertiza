@@ -1,7 +1,5 @@
-class AddParticipantIdToTeamsUsers < ActiveRecord::Migration[5.1]
+class AddParticipantIdToTeamsUsers < ActiveRecord::Migration[4.2]
   def change
-    add_reference :teams_users, :participant, foreign_key: true
-    add_foreign_key :teams_users, :participants
-  rescue StandardError
+    add_reference :teams_users, :participant, index: true, foreign_key: true
   end
 end
